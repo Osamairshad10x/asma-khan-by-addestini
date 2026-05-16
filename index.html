@@ -293,30 +293,7 @@ footer{background:#0f0a2e;border-top:1px solid rgba(124,58,237,.1);padding:20px;
 </footer>
 
 <script>
-const SHEET_URL='function doGet(e) {
-  try {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-
-    var timestamp  = e.parameter.timestamp  || new Date().toLocaleString('en-IN');
-    var name       = e.parameter.name       || '';
-    var phone      = e.parameter.phone      || '';
-    var age        = e.parameter.age        || '';
-    var gender     = e.parameter.gender     || '';
-    var profession = e.parameter.profession || '';
-    var source     = e.parameter.source     || '';
-
-    sheet.appendRow([timestamp, name, phone, age, gender, profession, source]);
-
-    return ContentService
-      .createTextOutput(JSON.stringify({ result: 'success' }))
-      .setMimeType(ContentService.MimeType.JSON);
-
-  } catch(err) {
-    return ContentService
-      .createTextOutput(JSON.stringify({ result: 'error', message: err.toString() }))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-}';
+const SHEET_URL='https://script.google.com/macros/s/AKfycbzWCMv8rlIFhQE6S1O0SV0d6ZdEM-keXsCyUMkP9FX-e8pkKMoPFTXRLAGXPnDBPr2H/exec'
 const WA_NUMBER='917800160792';
 const imgs=['https://i.ibb.co/cKbH96DK/6.jpg','https://i.ibb.co/hx7kbShX/7.jpg','https://i.ibb.co/FTKr9qH/8.jpg','https://i.ibb.co/5XRkxhtQ/10.jpg','https://i.ibb.co/GQwsrT8Q/9.jpg'];
 
