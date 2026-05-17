@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CLIENT NAME — Skills That Pay For Life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- META PIXEL — Replace PIXEL_ID both places -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','PIXEL_ID'); fbq('track','PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+
+  <style>
+    :root{
+      --teal:#0f4c4c;
+      --teal2:#0a3535;
+      --teal3:#073030;
+      --coral:#ff5c3a;
+      --coral2:#ff7a5c;
+      --cream:#faf7f2;
+      --cream2:#f0ebe0;
+      --cream3:#e8e0d0;
+      --text:#1a1a1a;
+      --text2:#444444;
+      --text3:#888888;
+      --white:#ffffff;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;overflow-x:hidden;}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+    /* MODALS */
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(15,76,76,0.92);z-index:9999;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);}
+    .modal-overlay.active{display:flex;}
+    .privacy-box{background:var(--white);border-radius:20px;padding:32px;max-width:500px;width:100%;position:relative;max-height:85vh;overflow-y:auto;}
+    .modal-close{position:absolute;top:12px;right:16px;background:none;border:none;color:var(--text3);font-size:24px;cursor:pointer;}
+    .modal-close:hover{color:var(--coral);}
+    .privacy-box h3{color:var(--teal);font-size:13px;font-weight:600;margin:16px 0 5px;}
+    .privacy-box h3:first-of-type{margin-top:0;}
+    .privacy-box p{color:var(--text2);font-size:12px;line-height:1.7;}
+    .privacy-footer{margin-top:14px;font-size:11px;color:var(--text3);}
+
+    /* FORM */
+    .form-box{background:var(--white);border-radius:24px;padding:36px 28px;max-width:440px;width:100%;position:relative;box-shadow:0 40px 100px rgba(15,76,76,0.18);}
+    .form-box-title{font-family:'Fraunces',serif;font-size:24px;font-weight:700;color:var(--teal);text-align:center;margin-bottom:4px;}
+    .form-box-sub{font-size:12px;color:var(--text3);text-align:center;margin-bottom:16px;}
+    .fgroup{margin-bottom:14px;}
+    .fgroup label{display:block;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:7px;}
+    .fgroup input,.fgroup select{width:100%;padding:12px 16px;background:var(--cream);border:1.5px solid var(--cream3);border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;color:var(--text);outline:none;transition:all 0.25s;-webkit-appearance:none;}
+    .fgroup input::placeholder{color:var(--text3);}
+    .fgroup select option{background:var(--white);color:var(--text);}
+    .fgroup input:focus,.fgroup select:focus{border-color:var(--teal);background:rgba(15,76,76,0.04);}
+    .frow{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .form-send-btn{width:100%;padding:14px;background:var(--coral);color:var(--white);font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;border:none;border-radius:12px;cursor:pointer;margin-top:8px;transition:all 0.3s;letter-spacing:0.3px;}
+    .form-send-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,92,58,0.4);background:var(--coral2);}
+    .form-send-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+    .form-status{text-align:center;font-size:12px;margin-top:10px;min-height:16px;color:var(--teal);}
+
+    /* HERO */
+    .hero{background:var(--teal);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:14px 20px 28px;text-align:center;position:relative;overflow:visible;}
+    .hero-arc{position:absolute;bottom:-2px;left:0;right:0;height:30px;background:var(--cream);border-radius:50% 50% 0 0 / 100% 100% 0 0;}
+    .hero-tag{display:inline-flex;align-items:center;gap:8px;border:1.5px solid rgba(255,255,255,0.2);border-radius:100px;padding:8px 20px;margin-bottom:8px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.7);animation:up 0.8s ease both;}
+    .tag-blink{width:6px;height:6px;background:var(--coral);border-radius:50%;animation:blink 1.8s infinite;}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+    .hero-eyebrow{font-size:13px;font-weight:500;color:rgba(255,255,255,0.5);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;animation:up 0.8s 0.05s ease both;}
+    .hero-h{font-family:'Fraunces',serif;font-size:clamp(2.5rem,8vw,6rem);font-weight:900;line-height:1;letter-spacing:-2px;color:var(--white);animation:up 0.9s 0.1s ease both;margin-bottom:8px;}
+    .hero-h .coral{color:var(--coral);}
+    .hero-h .italic{font-style:italic;}
+    .hero-sub{font-size:clamp(0.9rem,2vw,1.05rem);color:rgba(255,255,255,0.55);max-width:380px;line-height:1.75;margin:10px auto 0;font-weight:300;animation:up 0.9s 0.2s ease both;}
+    .hero-pills{display:flex;flex-direction:column;align-items:center;gap:10px;justify-content:center;margin:14px 0;animation:up 0.9s 0.3s ease both;}
+    .hero-pill{padding:10px 22px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:100px;font-size:13px;color:rgba(255,255,255,0.8);font-weight:500;}
+    .hero-pill strong{color:var(--coral);font-weight:700;}
+    .hero-cta{animation:up 0.9s 0.4s ease both;}
+    .btn-coral{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--coral);color:var(--white);font-size:16px;font-weight:700;padding:17px 36px;border-radius:100px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all 0.3s;letter-spacing:0.3px;width:100%;max-width:420px;}
+    .btn-coral:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(255,92,58,0.45);background:var(--coral2);}
+    @keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+    /* SECTION BASE */
+    .sec-label{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:12px;}
+    .sec-h{font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--teal);line-height:1.1;margin-bottom:12px;}
+    .sec-h em{font-style:italic;color:var(--coral);}
+    .sec-p{font-size:15px;color:var(--text2);line-height:1.7;}
+
+    /* JOURNEY */
+    .journey-sec{background:var(--cream);padding:24px 20px;text-align:center;}
+    .journey-frame{max-width:480px;margin:20px auto 0;border-radius:20px;overflow:hidden;box-shadow:0 32px 80px rgba(15,76,76,0.15);}
+    .journey-frame img{width:100%;display:block;object-fit:cover;}
+    .journey-ph{width:100%;aspect-ratio:4/3;background:var(--cream2);display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:14px;}
+
+    /* COACH */
+    .coach-sec{background:var(--teal2);padding:44px 20px;text-align:center;}
+    .coach-name{font-family:'Fraunces',serif;font-size:clamp(2.5rem,8vw,5.5rem);font-weight:900;letter-spacing:-2px;line-height:0.95;color:var(--white);margin-bottom:16px;}
+    .coach-name em{font-style:italic;color:var(--coral);}
+    .coach-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:16px;}
+    .coach-chip{padding:9px 20px;border:1.5px solid rgba(255,255,255,0.15);border-radius:100px;font-size:13px;color:rgba(255,255,255,0.7);font-weight:400;}
+    .coach-block{max-width:520px;margin:0 auto 28px;background:rgba(255,255,255,0.05);border-radius:18px;padding:28px 28px;text-align:left;border-left:4px solid var(--coral);}
+    .coach-block p{font-size:16px;color:rgba(255,255,255,0.8);line-height:1.75;font-weight:300;font-style:italic;}
+    .coach-block cite{display:block;font-size:12px;color:var(--coral2);margin-top:12px;font-style:normal;font-weight:600;letter-spacing:1px;}
+
+    /* STATS */
+    .stats-sec{background:var(--coral);padding:36px 20px;}
+    .stats-inner{display:grid;grid-template-columns:repeat(3,1fr);max-width:640px;margin:0 auto;gap:0;}
+    .stat-col{text-align:center;padding:20px 10px;border-right:1px solid rgba(255,255,255,0.2);}
+    .stat-col:last-child{border-right:none;}
+    .stat-v{font-family:'Fraunces',serif;font-size:2.6rem;font-weight:900;color:var(--white);line-height:1;}
+    .stat-l{font-size:11px;color:rgba(255,255,255,0.7);margin-top:6px;letter-spacing:1px;text-transform:uppercase;}
+
+    /* TESTIMONIALS */
+    .test-sec{padding:44px 0;background:var(--cream2);overflow:hidden;}
+    .test-header{text-align:center;padding:0 24px;margin-bottom:20px;}
+    .marquee-outer{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent 0%,black 8%,black 92%,transparent 100%);mask:linear-gradient(90deg,transparent 0%,black 8%,black 92%,transparent 100%);}
+    .marquee-inner{display:flex;gap:14px;width:max-content;animation:scroll 22s linear infinite;}
+    .marquee-inner:hover{animation-play-state:paused;}
+    @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .tcard{width:170px;height:300px;border-radius:16px;overflow:hidden;flex-shrink:0;box-shadow:0 8px 32px rgba(15,76,76,0.10);}
+    .tcard img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s;display:block;}
+    .tcard:hover img{transform:scale(1.06);}
+
+    /* BENEFITS */
+    .benefits-sec{padding:44px 20px;background:var(--cream);}
+    .benefits-header{text-align:center;margin-bottom:40px;}
+    .benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:680px;margin:0 auto;}
+    .b-card{background:var(--white);border-radius:20px;padding:30px 24px;border:2px solid transparent;transition:all 0.3s;}
+    .b-card:hover{border-color:var(--coral);transform:translateY(-4px);box-shadow:0 20px 50px rgba(255,92,58,0.12);}
+    .b-num{font-family:'Fraunces',serif;font-size:3rem;font-weight:900;color:rgba(15,76,76,0.1);line-height:1;margin-bottom:12px;}
+    .b-title{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:var(--teal);margin-bottom:8px;}
+    .b-desc{font-size:13px;color:var(--text2);line-height:1.65;}
+    .benefits-cta{text-align:center;margin-top:20px;}
+
+    /* KNOW */
+    .know-sec{padding:44px 20px;background:var(--teal3);text-align:center;}
+    .know-sec .sec-h{color:var(--white);}
+    .know-sec .sec-label{color:rgba(255,255,255,0.5);}
+    .know-grid{display:flex;flex-direction:column;max-width:440px;margin:18px auto;border:1px solid rgba(255,255,255,0.1);border-radius:18px;overflow:hidden;}
+    .know-row{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;border-bottom:1px solid rgba(255,255,255,0.08);}
+    .know-row:last-child{border-bottom:none;}
+    .know-val{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:700;color:var(--coral);}
+    .know-lbl{font-size:13px;color:rgba(255,255,255,0.5);}
+    .know-ico{font-size:1.5rem;}
+    .now-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:28px 20px;max-width:460px;margin:0 auto;}
+    .now-title{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--white);margin-bottom:20px;}
+    .now-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .now-box{background:rgba(255,255,255,0.06);border-radius:14px;padding:20px 14px;text-align:center;}
+    .now-val{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:var(--coral);}
+    .now-lbl{font-size:12px;color:rgba(255,255,255,0.4);margin-top:6px;}
+
+    /* FAQ */
+    .faq-sec{padding:44px 20px;background:var(--cream);}
+    .faq-header{text-align:center;margin-bottom:20px;}
+    .faq-list{max-width:660px;margin:0 auto;}
+    .faq-item{border-bottom:2px solid var(--cream2);}
+    .faq-q{width:100%;background:none;border:none;text-align:left;padding:18px 0;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:500;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;transition:color 0.2s;}
+    .faq-q:hover{color:var(--teal);}
+    .faq-icon{width:28px;height:28px;border-radius:50%;border:2px solid var(--cream3);color:var(--teal);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;transition:all 0.3s;}
+    .faq-item.open .faq-icon{background:var(--coral);border-color:var(--coral);color:white;transform:rotate(45deg);}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;padding:0;font-size:13px;color:var(--text2);line-height:1.7;}
+    .faq-item.open .faq-a{max-height:160px;padding-bottom:16px;}
+
+    /* CTA */
+    .cta-sec{padding:44px 20px;background:var(--cream2);}
+    .cta-inner{max-width:820px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;}
+    .cta-h{font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--teal);line-height:1.1;margin-bottom:12px;}
+    .cta-h em{font-style:italic;color:var(--coral);}
+    .cta-p{font-size:15px;color:var(--text2);margin-bottom:24px;line-height:1.65;}
+    .how-block{background:var(--white);border-radius:16px;padding:22px;margin-bottom:18px;border-left:4px solid var(--teal);}
+    .how-head{font-size:14px;font-weight:700;color:var(--teal);margin-bottom:12px;}
+    .how-line{font-size:14px;color:var(--text2);line-height:2.2;}
+    .how-line strong{color:var(--text);}
+    .save-num{display:flex;align-items:center;gap:10px;background:rgba(37,211,102,0.08);border:1.5px solid rgba(37,211,102,0.2);border-radius:12px;padding:10px 16px;margin-bottom:16px;}
+    .save-num span{font-size:14px;color:var(--text);font-weight:600;}
+    .btn-wa{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--coral);color:var(--white);font-size:16px;font-weight:700;padding:17px;border-radius:100px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;width:100%;margin-bottom:14px;transition:all 0.3s;}
+    .btn-wa:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(255,92,58,0.4);background:var(--coral2);}
+    .expect{background:var(--white);border-radius:14px;padding:18px;}
+    .expect-title{font-size:13px;color:var(--text3);margin-bottom:10px;}
+    .expect-row{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text2);padding:7px 0;border-bottom:1.5px solid var(--cream2);}
+    .expect-row:last-child{border-bottom:none;}
+    .expect-dot{width:22px;height:22px;background:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:white;flex-shrink:0;}
+    .cta-right-box{background:var(--white);border-radius:20px;padding:26px 20px;box-shadow:0 8px 40px rgba(15,76,76,0.08);}
+    .cta-right-h{font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:var(--teal);text-align:center;margin-bottom:18px;}
+
+    /* FOOTER */
+    footer{padding:48px 24px;background:var(--teal3);text-align:center;}
+    .footer-tagline{font-size:14px;color:#ffffff;margin-bottom:6px;font-weight:500;}
+    
+    .footer-sign{font-size:13px;color:#ffffff;margin-bottom:18px;}
+    footer a{color:#ffffff;font-size:12px;text-decoration:none;transition:color 0.2s;}
+    footer a:hover{color:var(--coral);}
+    .footer-power{font-size:12px;color:#ffffff;margin-top:10px;}
+
+    /* SR */
+    .sr{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .sr.in{opacity:1;transform:translateY(0);}
+
+    @media(max-width:640px){
+      .benefits-grid{grid-template-columns:1fr;}
+      .cta-inner{grid-template-columns:1fr;}
+      .stats-inner{grid-template-columns:1fr;}
+      .stat-col{border-right:none;border-bottom:1px solid rgba(255,255,255,0.2);}
+      .stat-col:last-child{border-bottom:none;}
+      .hero-pills{flex-direction:column;align-items:center;}
+      .now-grid{grid-template-columns:1fr 1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- PRIVACY MODAL -->
+<div class="modal-overlay" id="privacyModal">
+  <div class="privacy-box">
+    <button class="modal-close" onclick="closeModal('privacyModal')">×</button>
+    <h3>Information We Collect</h3>
+    <p>We collect your name, phone number, and details you share through WhatsApp or our contact form.</p>
+    <h3>How We Use It</h3>
+    <p>Used only to communicate about our training programs and provide support.</p>
+    <h3>Data Protection</h3>
+    <p>Your data is never sold or shared for marketing purposes.</p>
+    <h3>Your Rights</h3>
+    <p>You may access, correct, or delete your information at any time.</p>
+    <p class="privacy-footer">By using our services, you agree to this policy. Last updated: 2024</p>
+  </div>
+</div>
+
+<!-- FORM MODAL -->
+<div class="modal-overlay" id="formModal">
+  <div class="form-box">
+    <button class="modal-close" onclick="closeModal('formModal')">×</button>
+    <div class="form-box-title">Let's Begin</div>
+    <!-- CHANGE: client name -->
+    <div class="form-box-sub">CLIENT NAME will reach out within 24 hrs</div>
+    <input type="hidden" id="formSource" value=""/>
+    <div class="fgroup"><label>Full Name *</label><input type="text" id="m-name" placeholder="Your full name"/></div>
+    <div class="fgroup"><label>Phone *</label><input type="tel" id="m-phone" placeholder="10-digit number" maxlength="10" inputmode="numeric"/></div>
+    <div class="frow">
+      <div class="fgroup"><label>Age *</label><input type="number" id="m-age" placeholder="Age" min="15" max="60"/></div>
+      <div class="fgroup"><label>Gender *</label><select id="m-gender"><option value="">Select</option><option>Female</option><option>Male</option><option>Other</option></select></div>
+    </div>
+    <div class="fgroup"><label>Profession *</label><select id="m-profession"><option value="">Select</option><option>Student</option><option>Housewife</option><option>Working Professional</option><option>Other</option></select></div>
+    <button class="form-send-btn" id="sendBtn" onclick="submitForm()">📲 Send to WhatsApp</button>
+    <div class="form-status" id="formStatus"></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag"><div class="tag-blink"></div>Digital Skills Coach</div>
+  <h1 class="hero-h"><span class="counter coral" data-target="10000" data-suffix="+">0+</span> Lives Transformed</h1>
+  <p class="hero-sub">Stop dreaming about financial freedom — start building it. Real skills, real income, real results.</p>
+  <div class="hero-pills">
+    <!-- CHANGE: numbers -->
+    <div class="hero-pill"><strong class="counter" data-target="2000" data-suffix="+">0+</strong> Students Trained</div>
+    <div class="hero-pill"><strong class="counter" data-target="100000" data-prefix="₹" data-suffix="+">₹0+</strong> Monthly Income</div>
+    <div class="hero-pill"><strong class="counter" data-target="3" data-suffix="+">0+</strong> Years of Mentoring</div>
+  </div>
+  <div class="hero-arc"></div>
+</section>
+
+<!-- JOURNEY -->
+<section class="journey-sec">
+  <p class="sec-label" style="text-align:center">My Story</p>
+  <h2 class="sec-h" style="text-align:center">See My <em>Journey</em></h2>
+  <p class="sec-p" style="text-align:center;max-width:440px;margin:0 auto">From a complete beginner to building India's most dedicated skills community — here's my story.</p>
+  <div class="journey-frame sr">
+    <!-- CHANGE: replace JOURNEY_IMAGE_URL with imgbb Direct Link -->
+    <img src="JOURNEY_IMAGE_URL" alt="My Journey" onerror="this.parentElement.innerHTML='<div class=journey-ph>📸 Add your image URL</div>'"/>
+  </div>
+  <div style="text-align:center;margin-top:24px;" class="sr">
+    <button class="btn-coral" style="margin:0 auto;" onclick="openFormModal('Connect Button')">📲 Connect on WhatsApp</button>
+  </div>
+</section>
+
+<!-- COACH -->
+<section class="coach-sec">
+  <div class="sr" style="max-width:560px;margin:0 auto;text-align:center;">
+    <p class="sec-label" style="color:rgba(255,255,255,0.4)">Your Mentor</p>
+    <!-- CHANGE: client name -->
+    <h2 class="coach-name">Hi, I'm<br/><em>CLIENT NAME</em></h2>
+    <div class="coach-chips">
+      <div class="coach-chip">Skills Coach</div>
+      <div class="coach-chip">Entrepreneur</div>
+      <div class="coach-chip">Freelancer</div>
+    </div>
+    <div class="coach-block">
+      <p>"I built my income from scratch using digital skills — no fancy degree, no connections, just the right knowledge. Now I want to hand you that same knowledge."</p>
+      <!-- CHANGE: client name -->
+      <cite>— CLIENT NAME</cite>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-sec sr">
+  <div class="stats-inner">
+    <!-- CHANGE: data-target numbers -->
+    <div class="stat-col"><div class="stat-v counter" data-target="2000" data-suffix="+">0+</div><div class="stat-l">Students</div></div>
+    <div class="stat-col"><div class="stat-v counter" data-target="100000" data-prefix="₹" data-suffix="+">₹0+</div><div class="stat-l">Monthly Income</div></div>
+    <div class="stat-col"><div class="stat-v counter" data-target="3" data-suffix="+">0+</div><div class="stat-l">Years</div></div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="test-sec">
+  <div class="test-header sr">
+    <p class="sec-label">Proof</p>
+    <h2 class="sec-h">Real People, <em>Real Results</em></h2>
+    <p class="sec-p" style="max-width:420px;margin:0 auto">Every screenshot is a real student. Every result is earned.</p>
+  </div>
+  <div class="marquee-outer"><div class="marquee-inner" id="row1"></div></div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits-sec">
+  <div class="benefits-header sr">
+    <p class="sec-label">What You Get</p>
+    <h2 class="sec-h">Everything You Need<br/><em>To Start Earning</em></h2>
+  </div>
+  <div class="benefits-grid">
+    <div class="b-card sr"><div class="b-num">01</div><div class="b-title">Personal Mentorship</div><p class="b-desc">Direct WhatsApp access to your coach. Real guidance whenever you need it.</p></div>
+    <div class="b-card sr" style="transition-delay:.07s"><div class="b-num">02</div><div class="b-title">Proven Training System</div><p class="b-desc">A complete blueprint — from zero knowledge to consistent income.</p></div>
+    <div class="b-card sr" style="transition-delay:.12s"><div class="b-num">03</div><div class="b-title">Live Community</div><p class="b-desc">Hundreds of active earners. Daily wins, support, and unstoppable momentum.</p></div>
+    <div class="b-card sr" style="transition-delay:.17s"><div class="b-num">04</div><div class="b-title">Income in Weeks</div><p class="b-desc">Not months. Most students see their first income within 30 days.</p></div>
+  </div>
+  <div class="benefits-cta sr">
+    <button class="btn-coral" style="margin:0 auto;" onclick="openFormModal('Get Started Button')">📲 Get Started Now</button>
+  </div>
+</section>
+
+<!-- KNOW COACH -->
+<section class="know-sec">
+  <p class="sec-label">Numbers</p>
+  <h2 class="sec-h sr">The Track <em style="color:var(--coral)">Record</em></h2>
+  <div class="know-grid sr">
+    <!-- CHANGE: data-target -->
+    <div class="know-row"><div><div class="know-val counter" data-target="3" data-suffix="+">0+</div><div class="know-lbl">Years of Experience</div></div><div class="know-ico">⭐</div></div>
+    <div class="know-row"><div><div class="know-val counter" data-target="1000" data-suffix="+">0+</div><div class="know-lbl">Entrepreneurs Created</div></div><div class="know-ico">🚀</div></div>
+  </div>
+  <div class="now-card sr">
+    <div class="now-title">Your Turn Now ⚡</div>
+    <div class="now-grid">
+      <!-- CHANGE: data-target -->
+      <div class="now-box"><div class="now-val counter" data-target="1600000" data-prefix="₹" data-format="full">₹0</div><div class="now-lbl">Earned by Students</div></div>
+      <div class="now-box"><div class="now-val counter" data-target="500" data-suffix="+">0+</div><div class="now-lbl">Earning ₹50K+</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="faq-header sr">
+    <p class="sec-label">FAQ</p>
+    <h2 class="sec-h">Questions <em>Answered</em></h2>
+  </div>
+  <div class="faq-list sr">
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What skills will I learn? <span class="faq-icon">+</span></button><div class="faq-a">Content Creation, Graphic Design, Video Editing, Freelancing, and Online Monetization. High-demand, 100% legitimate work.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is this actually genuine? <span class="faq-icon">+</span></button><div class="faq-a">Yes. 2000+ students earning consistently. The results speak for themselves.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How much time do I need? <span class="faq-icon">+</span></button><div class="faq-a">1-2 hours daily is enough. Flexible around your job, studies, or family.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">When will I start earning? <span class="faq-icon">+</span></button><div class="faq-a">Most students earn within 30 days. Steady income in 1-2 months.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do I need experience? <span class="faq-icon">+</span></button><div class="faq-a">Zero. We start from scratch with step-by-step guidance.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What support will I get? <span class="faq-icon">+</span></button><div class="faq-a">Personal WhatsApp mentorship, weekly calls, and an active earner community.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a fee? <span class="faq-icon">+</span></button><div class="faq-a">A small investment that covers everything. Zero hidden charges.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I do this with my job? <span class="faq-icon">+</span></button><div class="faq-a">Yes — built for busy people. Learn in your free time, grow at your own pace.</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="cta-inner">
+    <div class="sr">
+      <h2 class="cta-h">One Message.<br/><em>One Decision.</em><br/>One New Life.</h2>
+      <p class="cta-p">Financial freedom doesn't come from waiting. It starts with a single WhatsApp message.</p>
+      <div class="how-block">
+        <div class="how-head">📲 How to Begin</div>
+        <div class="how-line">Message me on WhatsApp with:</div><br/>
+        <div class="how-line"><strong>📝 Name · 🎂 Age · 💼 Profession</strong></div>
+      </div>
+      <!-- CHANGE: client number -->
+      <div class="save-num"><span>📌 Save My Number: <strong>XXXXXXXXXX</strong></span></div>
+      <button class="btn-wa" onclick="openFormModal('Message Button')">📲 Message on WhatsApp Now</button>
+      <div class="expect">
+        <div class="expect-title">Within 24 hours you'll receive:</div>
+        <div class="expect-row"><div class="expect-dot">✓</div>Complete program details</div>
+        <div class="expect-row"><div class="expect-dot">✓</div>Your personal earning roadmap</div>
+      </div>
+    </div>
+    <div class="cta-right-box sr" style="transition-delay:.1s">
+      <div class="cta-right-h">Follow the Journey</div>
+      <!-- CHANGE: Instagram username -->
+      <a href="https://www.instagram.com/CLIENT_INSTAGRAM" target="_blank" rel="noopener"
+         style="display:flex;align-items:center;justify-content:center;gap:9px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;font-size:14px;font-weight:700;padding:14px;border-radius:14px;text-decoration:none;transition:all 0.3s;margin-bottom:14px;"
+         onmouseover="this.style.opacity='0.88';this.style.transform='translateY(-2px)'"
+         onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Follow on Instagram
+      </a>
+      <div style="text-align:center;margin-top:8px;">
+        <a href="#" onclick="openModal('privacyModal');return false;" style="color:var(--text3);font-size:12px;text-decoration:none;" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='var(--text3)'">🔒 Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <!-- CHANGE: client name -->
+  <div class="footer-tagline">🌟 Empower with skills • 🌈 Support every vision • 🚀 Dreams to direction</div>
+  <div class="footer-sign">❤️ With Strength &amp; Sincerity, CLIENT NAME</div>
+  <div class="footer-power">Powered by <strong>AdDestini</strong></div>
+</footer>
+
+<script>
+  /* ══ CHANGE FOR EVERY CLIENT ══ */
+  const SHEET_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+  const WA_NUMBER = '91XXXXXXXXXX';
+  const imgs = [
+    'https://i.ibb.co/9kkjVfR6/2-Arshiya.jpg',
+    'https://i.ibb.co/DgWh0QQk/3-Arshiya.jpg',
+    'https://i.ibb.co/zT3ckSmK/4-Arshiya.jpg',
+    'https://i.ibb.co/HTyvvz6K/5-Arshiya.jpg',
+    'https://i.ibb.co/9HKXcMGv/6-Arshiya.jpg'
+  ];
+
+  function openModal(id){document.getElementById(id).classList.add('active');document.body.style.overflow='hidden';}
+  function closeModal(id){document.getElementById(id).classList.remove('active');document.body.style.overflow='';}
+  function openFormModal(source){clearForm();document.getElementById('formSource').value=source||'Unknown';openModal('formModal');}
+  document.querySelectorAll('.modal-overlay').forEach(o=>{o.addEventListener('click',function(e){if(e.target===this)closeModal(this.id);});});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal('formModal');closeModal('privacyModal');}});
+  function clearForm(){['m-name','m-phone','m-age','m-gender','m-profession'].forEach(id=>document.getElementById(id).value='');document.getElementById('formStatus').textContent='';const btn=document.getElementById('sendBtn');btn.disabled=false;btn.textContent='📲 Send to WhatsApp';}
+  document.getElementById('m-phone').addEventListener('input',function(){this.value=this.value.replace(/\D/g,'').slice(0,10);});
+
+  async function submitForm(){
+    const name=document.getElementById('m-name').value.trim(),phone=document.getElementById('m-phone').value.trim(),age=document.getElementById('m-age').value.trim(),gender=document.getElementById('m-gender').value,prof=document.getElementById('m-profession').value,source=document.getElementById('formSource').value;
+    if(!name||!phone||!age||!gender||!prof){document.getElementById('formStatus').style.color='#ef4444';document.getElementById('formStatus').textContent='⚠️ Please fill in all fields.';return;}
+    if(phone.length!==10){document.getElementById('formStatus').style.color='#ef4444';document.getElementById('formStatus').textContent='⚠️ Phone must be 10 digits.';return;}
+    const btn=document.getElementById('sendBtn');btn.disabled=true;btn.textContent='Opening...';document.getElementById('formStatus').textContent='';
+    saveToSheet({name,phone,age,gender,profession:prof,source});
+    if(typeof fbq!=='undefined')fbq('track','Lead');
+    const msg=`Hello,\n\nI'm interested in your skills coaching.\n\nName: ${name}\nPhone: ${phone}\nAge: ${age}\nGender: ${gender}\nProfession: ${prof}\n\nPlease share next steps. Thank you!`;
+    setTimeout(()=>{window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`,'_blank');setTimeout(()=>closeModal('formModal'),600);},600);
+  }
+
+  async function saveToSheet(data){
+    if(!SHEET_URL||SHEET_URL==='YOUR_APPS_SCRIPT_URL_HERE')return;
+    const p='?timestamp='+encodeURIComponent(new Date().toLocaleString('en-IN'))+'&name='+encodeURIComponent(data.name)+'&phone='+encodeURIComponent(data.phone)+'&age='+encodeURIComponent(data.age)+'&gender='+encodeURIComponent(data.gender)+'&profession='+encodeURIComponent(data.profession)+'&source='+encodeURIComponent(data.source);
+    const url=SHEET_URL+p;
+    try{await fetch(url,{method:'GET',mode:'no-cors'});return;}catch(e){}
+    try{await new Promise(r=>{const i=new Image();i.onload=i.onerror=r;i.src=url;setTimeout(r,3000);});}catch(e){}
+  }
+
+  const row1=document.getElementById('row1');
+  [...imgs,...imgs].forEach(src=>{const d=document.createElement('div');d.className='tcard';d.innerHTML=`<img src="${src}" alt="Student" loading="lazy"/>`;row1.appendChild(d);});
+
+  function toggleFaq(btn){const item=btn.closest('.faq-item'),isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');}
+
+  function animateCounter(el){
+    if(el.dataset.animated)return;el.dataset.animated='1';
+    const target=parseInt(el.dataset.target),suffix=el.dataset.suffix||'',prefix=el.dataset.prefix||'';
+    const duration=target>=100000?2000:1400,start=performance.now();
+    function ease(t){return t===1?1:1-Math.pow(2,-10*t);}
+    function tick(now){const p=Math.min((now-start)/duration,1);el.textContent=prefix+Math.floor(ease(p)*target).toLocaleString('en-IN')+suffix;if(p<1)requestAnimationFrame(tick);}
+    requestAnimationFrame(tick);
+  }
+
+  const srObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('.counter').forEach(animateCounter);srObs.unobserve(e.target);}});},{threshold:0.12});
+  document.querySelectorAll('.sr').forEach(el=>srObs.observe(el));
+  const cObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCounter(e.target);cObs.unobserve(e.target);}});},{threshold:0.4});
+  document.querySelectorAll('.counter').forEach(el=>{if(!el.closest('.sr'))cObs.observe(el);});
+</script>
+</body>
+</html>
