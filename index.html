@@ -437,7 +437,7 @@
     const btn=document.getElementById('sendBtn');btn.disabled=true;btn.textContent='Opening...';document.getElementById('formStatus').textContent='';
     saveToSheet({name,phone,age,gender,profession:prof,source});
     if(typeof fbq!=='undefined')fbq('track','Lead');
-    const msg=`Hello,\n\nI'm interested in your skills coaching.\n\nName: ${name}\nPhone: ${phone}\nAge: ${age}\nGender: ${gender}\nProfession: ${prof}\n\nPlease share next steps. Thank you!`;
+    const msg=`Hello Mam,\n\nI'm interested for this work.\n\nName: ${name}\nPhone: ${phone}\nAge: ${age}\nGender: ${gender}\nProfession: ${prof}\n\nPlease share next steps. Thank you!`;
     setTimeout(()=>{window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`,'_blank');setTimeout(()=>closeModal('formModal'),600);},600);
   }
 
